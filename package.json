@@ -1,0 +1,25 @@
+{
+  "name": "poe-campaign-companion",
+  "version": "1.0.0",
+  "description": "example",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UsernameError3/poe-campaign-companion.git"
+  },
+  "keywords": [
+    "poe"
+  ],
+  "author": "Alex Fleming",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UsernameError3/poe-campaign-companion/issues"
+  },
+  "homepage": "https://github.com/UsernameError3/poe-campaign-companion#readme",
+  "dependencies": {
+    "electron": "^16.0.7"
+  }
+}
