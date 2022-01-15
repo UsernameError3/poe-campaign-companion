@@ -1,2 +1,2 @@
 # poe-campaign-companion
-leveling / League Start Companion App
+Leveling / League Start Companion App
