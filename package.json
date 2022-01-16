@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/UsernameError3/poe-campaign-companion#readme",
   "dependencies": {
-    "electron": "^16.0.7"
+    "electron": "^16.0.7",
+    "path": "^0.12.7"
   }
 }

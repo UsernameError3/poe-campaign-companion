@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 10pt;
+    font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    color: #00FF00;
+    background-color: #181818;
+    overflow: hidden;
+}
+
+.window {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 1fr;
+}
+
+.window-titlebar {
+    height: 30px;
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: #121212;
+    align-items: center;
+}
+
+.window-titlebar > .window-icon {
+    margin-left: 4px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.window-titlebar > .window-title {
+    flex-grow: 1;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+}
+
+.window-titlebar > .window-controls {
+    user-select: none;
+    -webkit-user-select: none;
+}
+.window-body {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    overflow: hidden;
+}
+
+.window-sidebar {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #121212;
+}
+
+.sidebar-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.sidebar-button:last-of-type {
+    margin-top: auto;
+    margin-bottom: 15px;
+}
+
+.settings-button {
+    justify-self: flex-end;
+    align-content: center;
+}
+
+.window-content {
+    padding: 20px;
+}
+
+
+
+/* Window Buttons */
+
+.window-button {
+    border: 0px;
+    padding: 15px 20px 15px 20px;
+    cursor: pointer;
+}
+
+.window-icon-button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    background-image: url('../images/icons/icon_top_bar.png');
+    background-size: 50%;
+}
+
+.minimize-button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    background-image: url('../images/icons/icon_minimize.svg');
+    background-size: 70%;
+}
+
+.maximize-button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    background-image: url('../images/icons/icon_maximize.svg');
+    background-size: 50%;
+}
+
+.restore-button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    background-image: url('../images/icons/icon_restore.svg');
+    background-size: 50%;
+}
+
+.close-button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    background-image: url('../images/icons/icon_close.svg');
+    background-size: 70%;
+}
+
+/* Sidebar Buttons */
+
+.test-button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-image: url('../images/icons/icon_top_bar.png');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.settings-button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-image: url('../images/icons/icon_settings.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+/* Hover Styles */
+
+.normal-hover:hover {
+    background-color: #363636;
+}
+
+.normal-hover:active {
+    background-color: #00FF00;
+}
+
+.negative-hover:hover {
+    background-color: #ff3636;
+}
+
+.negative-hover:active {
+    background-color: #ff0000;
+}
+
+
+/* Scroll Bar */
+.scroll-enabled {
+    overflow-y: auto;
+}
+
+.scroll-enabled::-webkit-scrollbar {
+    width: 20px;
+}
+.scroll-enabled::-webkit-scrollbar-corner {
+    background: rgba(0,0,0,0);
+}
+.scroll-enabled::-webkit-scrollbar-thumb {
+    background-color: #363636;
+    border-radius: 6px;
+    border: 4px solid rgba(0,0,0,0);
+    background-clip: content-box;
+    min-width: 32px;
+    min-height: 32px;
+}
+.scroll-enabled::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,0);
+}
+
+
+
+
+
