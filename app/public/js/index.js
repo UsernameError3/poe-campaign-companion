@@ -16,31 +16,7 @@ function changeWindowResizeButton(fullscreen) {
     }
 }
 
-function changeWindowBodyContent(page) {
 
-    if (page === 'contentHome') {
-        windowBodyContent.innerHTML = '<div>home test</div>'
-
-    } else if (page === 'contentCampaign') {
-        windowBodyContent.innerHTML = '<div>campaign test</div>';
-
-    } else if (page === 'contentProfile') {
-        windowBodyContent.innerHTML = '<div>profile test</div>';
-
-    } else if (page === 'contentTasks') {
-        windowBodyContent.innerHTML = '<div>tasks test</div>';
-
-    } else if (page === 'contentLinks') {
-        windowBodyContent.innerHTML = '<div>links test</div>';
-
-    } else if (page === 'contentSettings') {
-        windowBodyContent.innerHTML = '<div>settings test</div>';
-
-    } else {
-        windowBodyContent.innerHTML = '<div>error test</div>';
-
-    }
-}
 
 /* Render Listeners */
 
@@ -73,30 +49,30 @@ windowCloseButton.addEventListener('click', () => {
 
 // Home Button
 sidebarHomeButton.addEventListener('click', () => {
-    changeWindowBodyContent('contentHome');
+    ipc.send('contentHome');
 });
 
 // Campaign Button
 sidebarCampaignButton.addEventListener('click', () => {
-    changeWindowBodyContent('contentCampaign');
+    ipc.send('contentCampaign');
 });
 
 // Profile Button
 sidebarProfileButton.addEventListener('click', () => {
-    changeWindowBodyContent('contentProfile');
+    ipc.send('contentProfile');
 });
 
 // Tasks Button
 sidebarTasksButton.addEventListener('click', () => {
-    changeWindowBodyContent('contentTasks');
+    ipc.send('contentTasks');
 });
 
 // Links Button
 sidebarLinksButton.addEventListener('click', () => {
-    changeWindowBodyContent('contentLinks');
+    ipc.send('contentLinks');
 });
 
 // Settings Button
 appSettingsButton.addEventListener('click', () => {
-    changeWindowBodyContent('contentSettings');
+    ipc.send('contentSettings');
 });

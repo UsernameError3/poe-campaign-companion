@@ -119,7 +119,7 @@ body {
     align-content: center;
 }
 
-/* Hover Styles */
+/* Hover / Active Styles */
 
 .window-button:hover {
     background-color: #262626;
@@ -140,6 +140,10 @@ body {
 .sidebar-button:hover svg {
     stroke: #00FF00;
     transition: 0.2s;
+}
+
+.sidebar-selection {
+    stroke: #00FF00;
 }
 
 .no-hover:hover {
