@@ -82,97 +82,111 @@ body {
 
 .window-button {
     border: 0px;
-    padding: 15px 20px 15px 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
     cursor: pointer;
 }
 
-.window-icon-button {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    background-image: url('../images/icons/icon_top_bar.png');
-    background-size: 50%;
+.window-button-svg {
+    fill: #ffffff;
 }
 
-.minimize-button {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    background-image: url('../images/icons/icon_minimize.svg');
-    background-size: 70%;
-}
-
-.maximize-button {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    background-image: url('../images/icons/icon_maximize.svg');
-    background-size: 50%;
-}
-
-.restore-button {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    background-image: url('../images/icons/icon_restore.svg');
-    background-size: 50%;
-}
-
-.close-button {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    background-image: url('../images/icons/icon_close.svg');
-    background-size: 70%;
+.window-button-icon {
+    border: 0px;
+    margin-top: 8px;
+    margin-left: 3px;
+    width: 25px;
+    height: 25px;
 }
 
 /* Sidebar Buttons */
 
-.test-button {
+.nav-button {
     width: 40px;
     height: 40px;
     border: none;
     outline: none;
-    background-color: transparent;
-    background-image: url('../images/icons/icon_top_bar.png');
-    background-size: 50%;
-    background-repeat: no-repeat;
-    background-position: center;
     transition: 0.2s;
     cursor: pointer;
 }
 
+.home-button {
+    background-color: transparent;
+    background-image: url('../images/icons/icon_home.svg');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.campaign-button {
+    background-color: transparent;
+    background-image: url('../images/icons/icon_compass.svg');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.task-button {
+    background-color: transparent;
+    background-image: url('../images/icons/icon_list.svg');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.profile-button {
+    background-color: transparent;
+    background-image: url('../images/icons/icon_profile.svg');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.link-button {
+    background-color: transparent;
+    background-image: url('../images/icons/icon_link.svg');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .settings-button {
-    width: 40px;
-    height: 40px;
-    border: none;
-    outline: none;
     background-color: transparent;
     background-image: url('../images/icons/icon_settings.svg');
     background-repeat: no-repeat;
     background-position: center;
-    transition: 0.2s;
-    cursor: pointer;
 }
 
 /* Hover Styles */
 
-.normal-hover:hover {
+.window-hover:hover {
     background-color: #363636;
 }
 
-.normal-hover:active {
+.window-hover:active {
     background-color: #00FF00;
 }
 
-.negative-hover:hover {
+.window-close-hover:hover {
     background-color: #ff3636;
 }
 
-.negative-hover:active {
+.window-close-hover:active {
     background-color: #ff0000;
 }
 
+.main-hover:hover {
+    background-color: #363636;
+}
+
+.main-hover:active {
+    background-color: #00FF00;
+}
 
 /* Scroll Bar */
 .scroll-enabled {

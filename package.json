@@ -2,7 +2,7 @@
   "name": "poe-campaign-companion",
   "version": "1.0.0",
   "description": "example",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "electron ."
   },

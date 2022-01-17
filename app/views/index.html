@@ -4,35 +4,42 @@
 <head>
   <title>POE CAMPAIGN COMPANION</title>
   <link rel="stylesheet" href="../public/css/main.css">
-  <script defer src="../public/js/main.js"></script>
+  <script defer src="../public/js/index.js"></script>
 </head>
 
 <body>
   <div class="window">
     <div class="window-titlebar">
       <div class="window-icon">
-        <a class="window-button window-icon-button" href="https://github.com/UsernameError3/poe-campaign-companion" target="_blank" rel="noopener noreferrer"></a>
+        <a class="window-button" href="https://github.com/UsernameError3/poe-campaign-companion" target="_blank" rel="noopener noreferrer">
+          <img class="window-button-icon" src="../public/images/icons/window_controls/icon_app.png">
+        </a>
       </div>
       <div class="window-title">
         <p>POE CAMPAIGN COMPANION</p>
       </div>
       <div class="window-controls">
-        <button id="minimizeButton" class="window-button minimize-button normal-hover" title="Minimize"></button>
-        <button id="resizeButton" class="window-button maximize-button normal-hover " title="Maximize"></button>
-        <button id="closeButton" class="window-button close-button negative-hover" title="Close"></button>
+        <button id="minimizeButton" class="window-button window-hover" title="Minimize">
+          <svg class="window-button-svg" xmlns="http://www.w3.org/2000/svg" width="14.08" height="7.04" viewBox="0 0 14.08 14.08"><rect width="14.08" height="2.04"/></svg>
+        </button>
+        <button id="resizeButton" class="window-button window-hover" title="Maximize">
+          <svg class="window-button-svg" xmlns="http://www.w3.org/2000/svg" width="13.39" height="13.39" viewBox="0 0 13.39 13.39"><path d="M18.69,18.69H5.31V5.31H18.69ZM17.39,6.61H6.61V17.39H17.39Z" transform="translate(-5.31 -5.31)"/></svg>
+        </button>
+        <button id="closeButton" class="window-button window-close-hover" title="Close">
+          <svg class="window-button-svg" xmlns="http://www.w3.org/2000/svg" width="14.01" height="14.01" viewBox="0 0 14.01 14.01"><polygon points="6.03 7 0 0.97 0.97 0 7 6.03 7 6.03 13.04 0 14.01 0.97 7.97 7 7.97 7 14.01 13.04 13.04 14.01 7 7.97 7.01 7.97 0.97 14.01 0 13.04 6.03 7"/></svg>
+        </button>
       </div>
     </div>
     <div class="window-body">
       <div class="window-sidebar">
-        <div class="sidebar-button"><button id="testButton" class="test-button" title="Test"></button></div>
-        <div class="sidebar-button"><button id="testButton" class="test-button" title="Test"></button></div>
-        <div class="sidebar-button"><button id="testButton" class="test-button" title="Test"></button></div>
-        <div class="sidebar-button"><button id="testButton" class="test-button" title="Test"></button></div>
-        <div class="sidebar-button"><button id="testButton" class="test-button" title="Test"></button></div>
-        <div class="sidebar-button"><button id="testButton" class="test-button" title="Test"></button></div>
-        <div class="sidebar-button"><button id="appSettings" class="settings-button" title="Menu"></button></div>
+        <div class="sidebar-button"><button id="testButton" class="nav-button home-button main-hover" title="Home"></button></div>
+        <div class="sidebar-button"><button id="testButton" class="nav-button campaign-button main-hover" title="Campaign"></button></div>
+        <div class="sidebar-button"><button id="testButton" class="nav-button profile-button main-hover" title="Profile"></button></div>
+        <div class="sidebar-button"><button id="testButton" class="nav-button task-button main-hover" title="Tasks"></button></div>
+        <div class="sidebar-button"><button id="testButton" class="nav-button link-button main-hover" title="Links"></button></div>
+        <div class="sidebar-button"><button id="appSettings" class="nav-button settings-button main-hover" title="Settings"></button></div>
       </div>
-      <div class="window-content scroll-enabled">
+      <div id="window-content" class="window-content scroll-enabled">
         <p>Example Content</p>
         <p>Example Content2</p>
         <p>Example Content</p>
