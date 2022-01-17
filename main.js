@@ -20,13 +20,8 @@ function createWindow() {
     win.loadFile('app/views/index.html');
     win.setBackgroundColor('#101010')
 
-    // Minimize App
-    ipc.on('minimizeApp', () => {
-        win.minimize();
-    })
-
     // Maximize Restore App
-    ipc.on('maximizeRestoreApp', () => {
+    ipc.on('windowResize', () => {
         if (win.isMaximized()) {
             win.restore();
         } else {
@@ -36,16 +31,21 @@ function createWindow() {
 
     // Check if App is Maximized
     win.on('maximize', () => {
-        win.webContents.send('isMaximized');
+        win.webContents.send('windowFullscreen');
     });
 
     // Check if App is Restored
     win.on('unmaximize', () => {
-        win.webContents.send('isRestored');
+        win.webContents.send('windowRestore');
     });
 
+    // Minimize App
+    ipc.on('windowMinimize', () => {
+        win.minimize();
+    })
+
     // Close App
-    ipc.on('closeApp', () => {
+    ipc.on('windowClose', () => {
         win.close();
     })
 
