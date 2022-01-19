@@ -11,8 +11,8 @@ exports.createBrowserWindow = () => {
         frame: false,
         backgroundColor: "#fff",
         webPreferences: {
-            nodeIntegration: true,
-            contextIsolation: false,
+            nodeIntegration: false,
+            contextIsolation: true,
             devTools: true,
             nativeWindowOpen: true,
             webviewTag: true,
