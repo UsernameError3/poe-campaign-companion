@@ -2,98 +2,90 @@ const { BrowserWindow, BrowserView, app, screen, ipcMain} = require('electron');
 const path = require('path');
 const ipc = ipcMain;
 
-function createWindow(launchWidth, launchHeight) {
+app.allowRendererProcessReuse = true;
+app.whenReady().then(() => {
+    // const primaryDisplay = screen.getPrimaryDisplay();
+    // const { launchWidth, launchHeight } = primaryDisplay.workAreaSize;
+    // createWindow(launchWidth, launchHeight);
 
-    const win = new BrowserWindow({
-        width: launchWidth,
-        height: launchHeight,
-        minWidth: 800,
-        minHeight: 600,
-        frame: false,
-        webPreferences: {
-            nodeIntegration: true,
-            contextIsolation: false,
-            devTools: true,
-            preload: path.join(__dirname, 'preload.js')
-        }
-    });
-
-    win.loadFile('app/views/index.html');
+    const window = require("./app/utils/window/window");
+    mainWindow = window.createBrowserWindow();
+    mainWindow.loadFile('app/views/index.html');
 
     // Maximize Restore App
     ipc.on('windowResize', () => {
-        if (win.isMaximized()) {
-            win.restore();
+        if (mainWindow.isMaximized()) {
+            mainWindow.restore();
         } else {
-            win.maximize();
+            mainWindow.maximize();
         }
     })
 
     // Check if App is Maximized
-    win.on('maximize', () => {
-        win.webContents.send('windowFullscreen');
+    mainWindow.on('maximize', () => {
+        mainWindow.webContents.send('windowFullscreen');
     });
 
     // Check if App is Restored
-    win.on('unmaximize', () => {
-        win.webContents.send('windowRestore');
+    mainWindow.on('unmaximize', () => {
+        mainWindow.webContents.send('windowRestore');
     });
 
     // Minimize App
     ipc.on('windowMinimize', () => {
-        win.minimize();
-    })
+        mainWindow.minimize();
+    });
 
     // Close App
     ipc.on('windowClose', () => {
-        win.close();
-    })
+        mainWindow.close();
+    });
 
     // Switch to Home Page
     ipc.on('contentHome', () => {
-        win.loadFile('app/views/index.html');
-    })
+        mainWindow.loadFile('app/views/index.html');
+    });
 
     // Switch to Campaign Page
     ipc.on('contentCampaign', () => {
-        win.loadFile('app/views/campaign.html');
-    })
+        mainWindow.loadFile('app/views/campaign.html');
+    });
 
-    // Switch to Profile Page
-    ipc.on('contentProfile', () => {
-        win.loadFile('app/views/profile.html');
+    // Switch to POE Lab Page
+    ipc.on('contentLab', () => {
+        mainWindow.loadFile('app/views/poelab.html');
+    });
 
-        /*
-        const view = new BrowserView();
-        const viewSize = 
-        win.setBrowserView(view);
-        view.setBounds({ x: 50, y: 30, width: 800, height: 570 });
-        view.setAutoResize({ width: true, height: true });
-        view.webContents.loadURL('https://www.pathofexile.com/account/view-profile/Zizaran/characters');
-        */
-    })
+    // Switch to POE Ninja Page
+    ipc.on('contentNinja', () => {
+        mainWindow.loadFile('app/views/poeninja.html');
+    });
+
+    // Switch to POE Antiquary Page
+    ipc.on('contentAntiquary', () => {
+        mainWindow.loadFile('app/views/poeantiquary.html');
+    });
+
+    // Switch to POE Wiki Page
+    ipc.on('contentWiki', () => {
+        mainWindow.loadFile('app/views/poewiki.html');
+    });
 
     // Switch to Tasks Page
     ipc.on('contentTasks', () => {
-        win.loadFile('app/views/tasks.html');
-    })
+        mainWindow.loadFile('app/views/tasks.html');
+    });
 
     // Switch to Links Page
     ipc.on('contentLinks', () => {
-        win.loadFile('app/views/links.html');
-    })
+        mainWindow.loadFile('app/views/links.html');
+    });
 
     // Switch to Settings Page
     ipc.on('contentSettings', () => {
-        win.loadFile('app/views/settings.html');
-    })
+        mainWindow.loadFile('app/views/settings.html');
+    });
 
-}
-
-app.whenReady().then(() => {
-    const primaryDisplay = screen.getPrimaryDisplay();
-    const { launchWidth, launchHeight } = primaryDisplay.workAreaSize;
-    createWindow(launchWidth, launchHeight);
 });
 
 // Windows / Linux Close Window
