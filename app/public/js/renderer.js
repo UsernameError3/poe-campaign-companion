@@ -16,31 +16,6 @@ function changeWindowResizeButton(fullscreen) {
     }
 }
 
-// Resize Webviews
-function calculateLayoutSize() {    
-    const titlebar = document.getElementById("windowTitlebar");
-    const sidebar = document.getElementById("windowSidebar");
-    const titlebarHeight = titlebar.clientHeight;
-    const sidebarWidth = sidebar.clientWidth;
-    const windowWidth = document.documentElement.clientWidth;
-    const windowHeight = document.documentElement.clientHeight;
-    const webviewHeight = windowHeight - titlebarHeight;
-    const webviewWidth = windowWidth - sidebarWidth;
-    const webview = document.getElementById("webview");
-
-    webview.style.width = webviewWidth + "px";
-    webview.style.height = webviewHeight + "px";
-}
-
-window.onload = () => {
-    calculateLayoutSize();
-}
-
-window.onresize = () => {
-    calculateLayoutSize();
-}
-
-
 /* Render Listeners */
 
 // Maximize App

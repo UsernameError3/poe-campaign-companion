@@ -21,6 +21,7 @@
   "homepage": "https://github.com/UsernameError3/poe-campaign-companion#readme",
   "dependencies": {
     "electron": "^16.0.7",
+    "electron-store": "^8.0.1",
     "path": "^0.12.7"
   }
 }
