@@ -1,11 +1,13 @@
 const { app, ipcMain } = require('electron');
+// const db = require('./app/db/stores/todoItem');
 const { ElectronBlocker } = require('@cliqz/adblocker-electron');
 const { fetch } = require('cross-fetch');
-const ipc = ipcMain;
 
 // Set UI Offsets in PX
 const windowTitlebarOffset = 30;
 const windowSidebarOffset = 50;
+
+// global.db = db;
 
 // Establish Cached BrowserViews
 const view = require("./app/utils/window/view");
@@ -20,54 +22,43 @@ app.whenReady().then(() => {
     mainWindow = window.createBrowserWindow();
     mainWindow.loadFile('app/views/index.html');
 
-    // Block Ads
+    // Block Ads - Inbuilt List
     ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
         blocker.enableBlockingInSession(mainWindow.webContents.session);
     });
 
-    // Maximize Restore App
-    ipc.on('windowResize', () => {
+    // Review IPC / Render Security w/ Preload
+    // https://stackoverflow.com/questions/52236641/electron-ipc-and-nodeintegration
+
+    ipcMain.handle('windowResize', (event) => {
         if (mainWindow.isMaximized()) {
             mainWindow.restore();
+            return false;
         } else {
             mainWindow.maximize();
+            return true;
         }
-    })
-
-    // Check if App is Maximized
-    mainWindow.on('maximize', () => {
-        mainWindow.webContents.send('windowFullscreen');
     });
 
-    // Check if App is Restored
-    mainWindow.on('unmaximize', () => {
-        mainWindow.webContents.send('windowRestore');
-    });
-
-    // Minimize App
-    ipc.on('windowMinimize', () => {
+    ipcMain.handle('windowMinimize', (event) => {
         mainWindow.minimize();
     });
 
-    // Close App
-    ipc.on('windowClose', () => {
+    ipcMain.handle('windowClose', (event) => {
         mainWindow.close();
     });
 
-    // Switch to Home Page
-    ipc.on('contentHome', () => {
+    ipcMain.handle('contentHome', (event) => {
         view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/index.html');
     });
 
-    // Switch to Campaign Page
-    ipc.on('contentCampaign', () => {
+    ipcMain.handle('contentCampaign', (event) => {
         view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/campaign.html');
     });
 
-    // Switch to POE Lab Page
-    ipc.on('contentLab', () => {
+    ipcMain.handle('contentLab', (event) => {
         view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/browserview.html');
 
@@ -78,8 +69,7 @@ app.whenReady().then(() => {
         }
     });
 
-    // Switch to POE Ninja Page
-    ipc.on('contentNinja', () => {
+    ipcMain.handle('contentNinja', (event) => {
         view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/browserview.html');
 
@@ -90,8 +80,7 @@ app.whenReady().then(() => {
         }
     });
 
-    // Switch to POE Antiquary Page
-    ipc.on('contentAntiquary', () => {
+    ipcMain.handle('contentAntiquary', (event) => {
         view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/browserview.html');
 
@@ -102,8 +91,7 @@ app.whenReady().then(() => {
         }
     });
 
-    // Switch to POE Wiki Page
-    ipc.on('contentWiki', () => {
+    ipcMain.handle('contentWiki', (event) => {
         view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/browserview.html');
         
@@ -114,20 +102,17 @@ app.whenReady().then(() => {
         }
     });
 
-    // Switch to Tasks Page
-    ipc.on('contentTasks', () => {
+    ipcMain.handle('contentTasks', (event) => {
         view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/tasks.html');
     });
 
-    // Switch to Links Page
-    ipc.on('contentLinks', () => {
+    ipcMain.handle('contentLinks', (event) => {
         view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/links.html');
     });
 
-    // Switch to Settings Page
-    ipc.on('contentSettings', () => {
+    ipcMain.handle('contentSettings', (event) => {
         view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/settings.html');
     });
@@ -138,4 +123,3 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
-
