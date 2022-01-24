@@ -29,45 +29,63 @@ windowCloseButton.addEventListener('click', () => {
 
 // Home Button
 sidebarHomeButton.addEventListener('click', () => {
-    api.loadHome();
+    api.loadHome().then(data => {
+        windowBodyContent.innerHTML = data;
+    });
 });
 
 // Campaign Button
 sidebarCampaignButton.addEventListener('click', () => {
-    api.loadCampaign();
-});
-
-// POE Lab Button
-sidebarPOELabButton.addEventListener('click', () => {
-    api.loadPOELab();
-});
-
-// POE Ninja Button
-sidebarPOENinjaButton.addEventListener('click', () => {
-    api.loadPOENinja();
-});
-
-// POE Antiquary Button
-sidebarPOEAntiquaryButton.addEventListener('click', () => {
-    api.loadPOEAntiquary();
-});
-
-// POE Wiki Button
-sidebarPOEWikiButton.addEventListener('click', () => {
-    api.loadPOEWiki();
+    api.loadCampaign().then(data => {
+        windowBodyContent.innerHTML = data;
+    });
 });
 
 // Tasks Button
 sidebarTasksButton.addEventListener('click', () => {
-    api.loadTasks();
+    api.loadTasks().then(data => {
+        windowBodyContent.innerHTML = data;
+    });
 });
 
 // Links Button
 sidebarLinksButton.addEventListener('click', () => {
-    api.loadLinks();
+    api.loadLinks().then(data => {
+        windowBodyContent.innerHTML = data;
+    });
 });
 
 // Settings Button
 appSettingsButton.addEventListener('click', () => {
-    api.loadSettings();
+    api.loadSettings().then(data => {
+        windowBodyContent.innerHTML = data;
+    });
+});
+
+// POE Lab Button
+sidebarPOELabButton.addEventListener('click', () => {
+    api.loadPOELab().then(data => {
+        windowBodyContent.innerHTML = '';
+    });
+});
+
+// POE Ninja Button
+sidebarPOENinjaButton.addEventListener('click', () => {
+    api.loadPOENinja().then(data => {
+        windowBodyContent.innerHTML = '';
+    });
+});
+
+// POE Antiquary Button
+sidebarPOEAntiquaryButton.addEventListener('click', () => {
+    api.loadPOEAntiquary().then(data => {
+        windowBodyContent.innerHTML = '';
+    });
+});
+
+// POE Wiki Button
+sidebarPOEWikiButton.addEventListener('click', () => {
+    api.loadPOEWiki().then(data => {
+        windowBodyContent.innerHTML = '';
+    });
 });

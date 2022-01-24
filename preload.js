@@ -6,11 +6,11 @@ contextBridge.exposeInMainWorld("api", {
     closeWindow:        () => ipcRenderer.invoke('windowClose'),
     loadHome:           () => ipcRenderer.invoke('contentHome'),
     loadCampaign:       () => ipcRenderer.invoke('contentCampaign'),
-    loadPOELab:         () => ipcRenderer.invoke('contentLab'),
-    loadPOENinja:       () => ipcRenderer.invoke('contentNinja'),
-    loadPOEAntiquary:   () => ipcRenderer.invoke('contentAntiquary'),
-    loadPOEWiki:        () => ipcRenderer.invoke('contentWiki'),
     loadTasks:          () => ipcRenderer.invoke('contentTasks'),
     loadLinks:          () => ipcRenderer.invoke('contentLinks'),
-    loadSettings:       () => ipcRenderer.invoke('contentSettings')
+    loadSettings:       () => ipcRenderer.invoke('contentSettings'),
+    loadPOELab:         () => ipcRenderer.invoke('viewLab'),
+    loadPOENinja:       () => ipcRenderer.invoke('viewNinja'),
+    loadPOEAntiquary:   () => ipcRenderer.invoke('viewAntiquary'),
+    loadPOEWiki:        () => ipcRenderer.invoke('viewWiki')
 })

@@ -81,6 +81,7 @@ app.whenReady().then(() => {
         } else {
             view.loadBrowserView(mainWindow, labView, windowSidebarOffset, windowTitlebarOffset);
         }
+        return;
     });
 
     ipcMain.handle('viewNinja', (event) => {
@@ -91,6 +92,7 @@ app.whenReady().then(() => {
         } else {
             view.loadBrowserView(mainWindow, ninjaView, windowSidebarOffset, windowTitlebarOffset);
         }
+        return;
     });
 
     ipcMain.handle('viewAntiquary', (event) => {
@@ -101,6 +103,7 @@ app.whenReady().then(() => {
         } else {
             view.loadBrowserView(mainWindow, antiquaryView, windowSidebarOffset, windowTitlebarOffset);
         }
+        return;
     });
 
     ipcMain.handle('viewWiki', (event) => {
@@ -111,6 +114,7 @@ app.whenReady().then(() => {
         } else {
             view.loadBrowserView(mainWindow, wikiView, windowSidebarOffset, windowTitlebarOffset);
         }
+        return;
     });
 
 });
