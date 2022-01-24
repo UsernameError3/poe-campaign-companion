@@ -35,6 +35,12 @@ const resizeBrowserView = (currentWindow, windowOffsetX, windowOffsetY) => {
 };
 
 // Load BrowserView Determines whether to Replace or to Assign, with Resize on Provided Window.
+exports.detachBrowserView = (currentWindow) => {
+    const currentView = currentWindow.getBrowserView();
+    currentWindow.removeBrowserView(currentView);
+};
+
+// Load BrowserView Determines whether to Replace or to Assign, with Resize on Provided Window.
 exports.loadBrowserView = (currentWindow, newBrowserView, windowOffsetX, windowOffsetY) => {
     if (currentWindow.getBrowserView()) {
         replaceBrowserView(currentWindow, newBrowserView);

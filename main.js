@@ -1,4 +1,6 @@
 const { app, ipcMain } = require('electron');
+const { ElectronBlocker } = require('@cliqz/adblocker-electron');
+const { fetch } = require('cross-fetch');
 const ipc = ipcMain;
 
 // Set UI Offsets in PX
@@ -17,6 +19,11 @@ app.whenReady().then(() => {
     const window = require("./app/utils/window/window");
     mainWindow = window.createBrowserWindow();
     mainWindow.loadFile('app/views/index.html');
+
+    // Block Ads
+    ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
+        blocker.enableBlockingInSession(mainWindow.webContents.session);
+    });
 
     // Maximize Restore App
     ipc.on('windowResize', () => {
@@ -49,16 +56,19 @@ app.whenReady().then(() => {
 
     // Switch to Home Page
     ipc.on('contentHome', () => {
+        view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/index.html');
     });
 
     // Switch to Campaign Page
     ipc.on('contentCampaign', () => {
+        view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/campaign.html');
     });
 
     // Switch to POE Lab Page
     ipc.on('contentLab', () => {
+        view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/browserview.html');
 
         if (labView === '') {
@@ -70,6 +80,7 @@ app.whenReady().then(() => {
 
     // Switch to POE Ninja Page
     ipc.on('contentNinja', () => {
+        view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/browserview.html');
 
         if (ninjaView === '') {
@@ -81,6 +92,7 @@ app.whenReady().then(() => {
 
     // Switch to POE Antiquary Page
     ipc.on('contentAntiquary', () => {
+        view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/browserview.html');
 
         if (antiquaryView === '') {
@@ -92,8 +104,9 @@ app.whenReady().then(() => {
 
     // Switch to POE Wiki Page
     ipc.on('contentWiki', () => {
+        view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/browserview.html');
-
+        
         if (wikiView === '') {
             wikiView = view.createBrowserView('https://www.poewiki.net/wiki/Path_of_Exile_Wiki', mainWindow, windowSidebarOffset, windowTitlebarOffset);
         } else {
@@ -103,16 +116,19 @@ app.whenReady().then(() => {
 
     // Switch to Tasks Page
     ipc.on('contentTasks', () => {
+        view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/tasks.html');
     });
 
     // Switch to Links Page
     ipc.on('contentLinks', () => {
+        view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/links.html');
     });
 
     // Switch to Settings Page
     ipc.on('contentSettings', () => {
+        view.detachBrowserView(mainWindow);
         mainWindow.loadFile('app/views/settings.html');
     });
 
