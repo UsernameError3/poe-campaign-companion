@@ -1,5 +1,5 @@
 const { app, ipcMain } = require('electron');
-// const db = require('./app/db/stores/todoItem');
+const db = require('./app/db/stores/todoItem');
 const { ElectronBlocker } = require('@cliqz/adblocker-electron');
 const { fetch } = require('cross-fetch');
 
@@ -7,7 +7,7 @@ const { fetch } = require('cross-fetch');
 const windowTitlebarOffset = 30;
 const windowSidebarOffset = 50;
 
-// global.db = db;
+global.db = db;
 
 // Establish Cached BrowserViews
 const view = require("./app/utils/window/view");
