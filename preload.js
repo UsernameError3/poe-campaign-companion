@@ -1,6 +1,6 @@
 const { ipcRenderer, contextBridge } = require('electron');
 
-contextBridge.exposeInMainWorld("api", {
+const apiConfig = {
     resizeWindow:       () => ipcRenderer.invoke('windowResize'),
     minimizeWindow:     () => ipcRenderer.invoke('windowMinimize'),
     closeWindow:        () => ipcRenderer.invoke('windowClose'),
@@ -13,4 +13,6 @@ contextBridge.exposeInMainWorld("api", {
     loadPOENinja:       () => ipcRenderer.invoke('viewNinja'),
     loadPOEAntiquary:   () => ipcRenderer.invoke('viewAntiquary'),
     loadPOEWiki:        () => ipcRenderer.invoke('viewWiki')
-})
+};
+
+contextBridge.exposeInMainWorld("api", apiConfig)
