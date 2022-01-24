@@ -16,6 +16,7 @@ var ninjaView = '';
 var antiquaryView = '';
 var wikiView = '';
 
+// Application Logic
 app.allowRendererProcessReuse = true;
 app.whenReady().then(() => {
     const window = require("./app/utils/window/window");
@@ -27,9 +28,7 @@ app.whenReady().then(() => {
         blocker.enableBlockingInSession(mainWindow.webContents.session);
     });
 
-    // Review IPC / Render Security w/ Preload
-    // https://stackoverflow.com/questions/52236641/electron-ipc-and-nodeintegration
-
+    // Handle Preload API Calls from Renderer
     ipcMain.handle('windowResize', (event) => {
         if (mainWindow.isMaximized()) {
             mainWindow.restore();
@@ -50,17 +49,32 @@ app.whenReady().then(() => {
 
     ipcMain.handle('contentHome', (event) => {
         view.detachBrowserView(mainWindow);
-        mainWindow.loadFile('app/views/index.html');
+        return 'HomeTesting';
     });
 
     ipcMain.handle('contentCampaign', (event) => {
         view.detachBrowserView(mainWindow);
-        mainWindow.loadFile('app/views/campaign.html');
+        return 'CampaignTesting';
     });
 
-    ipcMain.handle('contentLab', (event) => {
+    ipcMain.handle('contentTasks', (event) => {
         view.detachBrowserView(mainWindow);
-        mainWindow.loadFile('app/views/browserview.html');
+        return 'TasksTesting';
+    });
+
+    ipcMain.handle('contentLinks', (event) => {
+        view.detachBrowserView(mainWindow);
+        return 'LinksTesting';
+    });
+
+    ipcMain.handle('contentSettings', (event) => {
+        view.detachBrowserView(mainWindow);
+        return 'SettingsTesting';
+    });
+
+
+    ipcMain.handle('viewLab', (event) => {
+        view.detachBrowserView(mainWindow);
 
         if (labView === '') {
             labView = view.createBrowserView('https://www.poelab.com/', mainWindow, windowSidebarOffset, windowTitlebarOffset);
@@ -69,9 +83,8 @@ app.whenReady().then(() => {
         }
     });
 
-    ipcMain.handle('contentNinja', (event) => {
+    ipcMain.handle('viewNinja', (event) => {
         view.detachBrowserView(mainWindow);
-        mainWindow.loadFile('app/views/browserview.html');
 
         if (ninjaView === '') {
             ninjaView = view.createBrowserView('https://poe.ninja/', mainWindow, windowSidebarOffset, windowTitlebarOffset);
@@ -80,9 +93,8 @@ app.whenReady().then(() => {
         }
     });
 
-    ipcMain.handle('contentAntiquary', (event) => {
+    ipcMain.handle('viewAntiquary', (event) => {
         view.detachBrowserView(mainWindow);
-        mainWindow.loadFile('app/views/browserview.html');
 
         if (antiquaryView === '') {
             antiquaryView = view.createBrowserView('https://poe-antiquary.xyz/', mainWindow, windowSidebarOffset, windowTitlebarOffset);
@@ -91,30 +103,14 @@ app.whenReady().then(() => {
         }
     });
 
-    ipcMain.handle('contentWiki', (event) => {
+    ipcMain.handle('viewWiki', (event) => {
         view.detachBrowserView(mainWindow);
-        mainWindow.loadFile('app/views/browserview.html');
-        
+
         if (wikiView === '') {
             wikiView = view.createBrowserView('https://www.poewiki.net/wiki/Path_of_Exile_Wiki', mainWindow, windowSidebarOffset, windowTitlebarOffset);
         } else {
             view.loadBrowserView(mainWindow, wikiView, windowSidebarOffset, windowTitlebarOffset);
         }
-    });
-
-    ipcMain.handle('contentTasks', (event) => {
-        view.detachBrowserView(mainWindow);
-        mainWindow.loadFile('app/views/tasks.html');
-    });
-
-    ipcMain.handle('contentLinks', (event) => {
-        view.detachBrowserView(mainWindow);
-        mainWindow.loadFile('app/views/links.html');
-    });
-
-    ipcMain.handle('contentSettings', (event) => {
-        view.detachBrowserView(mainWindow);
-        mainWindow.loadFile('app/views/settings.html');
     });
 
 });
