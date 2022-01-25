@@ -1,13 +1,32 @@
 const { app, ipcMain } = require('electron');
-const db = require('./app/db/stores/todoItem');
 const { ElectronBlocker } = require('@cliqz/adblocker-electron');
 const { fetch } = require('cross-fetch');
+const fs = require('fs');
 
 // Set UI Offsets in PX
 const windowTitlebarOffset = 30;
 const windowSidebarOffset = 50;
 
-global.db = db;
+// Database Stuff
+const Datastore = require('electron-store');
+// const todoItemSchema = require('../schemas/todoItem');
+
+const todoItemSchema = {
+    type: 'object',
+    properties: {
+        content: {
+            type: 'string',
+        },
+        isDone: {
+            type: 'boolean',
+            default: false
+        }
+    },
+};
+
+const store = new Datastore({todoItemSchema});
+
+
 
 // Establish Cached BrowserViews
 const view = require("./app/utils/window/view");
@@ -27,6 +46,8 @@ app.whenReady().then(() => {
     ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
         blocker.enableBlockingInSession(mainWindow.webContents.session);
     });
+
+    mainWindow.webContents.openDevTools()
 
     // Handle Preload API Calls from Renderer
     ipcMain.handle('windowResize', (event) => {
@@ -64,7 +85,8 @@ app.whenReady().then(() => {
 
     ipcMain.handle('contentLinks', (event) => {
         view.detachBrowserView(mainWindow);
-        return 'LinksTesting';
+        const linkBodyContent = fs.readFileSync('app/views/components/links/windowBodyContent.html', 'utf-8');
+        return linkBodyContent;
     });
 
     ipcMain.handle('contentSettings', (event) => {
@@ -115,6 +137,33 @@ app.whenReady().then(() => {
             view.loadBrowserView(mainWindow, wikiView, windowSidebarOffset, windowTitlebarOffset);
         }
         return;
+    });
+
+    // Links
+
+    ipcMain.handle('addNewLink', (event) => {
+        console.log('input: ');
+    });
+
+    /*
+    ipcMain.handle('addNewLink', (event, dirtyInput) => {
+        console.log('input: ', dirtyInput);
+        if (dirtyInput) {
+            db.create({content: dirtyInput}).then(result => {
+                console.log('result: ', result);
+                return;
+            });
+        } else {
+            console.log('no input.');
+            return;
+        }
+    });
+    */
+
+    ipcMain.handle('updateLinkList', (event, dirtyInput) => {
+        db.readAll().then(result => {
+            return result;
+        });
     });
 
 });

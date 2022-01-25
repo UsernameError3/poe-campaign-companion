@@ -18,7 +18,8 @@ const apiConfig = {
         loadPOEWiki:        () => ipcRenderer.invoke('viewWiki')
     },
     links: {
-        addNewLink:         () => ipcRenderer.invoke('addNewLink')
+        addNewLink:         () => ipcRenderer.invoke('addNewLink'),
+        updateLinkList:     () => ipcRenderer.invoke('updateLinkList')
     }
 };
 

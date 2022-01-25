@@ -1,27 +1,4 @@
-
-// Links Button
-addBtn.addEventListener('click', () => {
-    const dirtyInput = document.getElementById('myInput').value;
-    api.links.addNewLink(dirtyInput).then(data => {
-        document.getElementById('myInput').value = null;
-        updateView();
-    });
-});
-
-document.getElementById('addBtn').addEventListener('click', () => {
-    const inputValue = document.getElementById('myInput').value;
-    if (inputValue) {
-        dbInstance.create({content: inputValue})
-        .then(result => {
-            document.getElementById('myInput').value = null;
-            updateView();
-        })
-    }
-})
-
-
-const dbInstance = remote.getGlobal('db');
-
+/*
 function createTodoItemView(content) {
     const liNode = document.createElement('li');
     // close button
@@ -36,18 +13,25 @@ function createTodoItemView(content) {
 }
 
 function updateView() {
-    const todolistNode = document.getElementById('todolist');
-    todolistNode.innerHTML = '';
+    todolist.innerHTML = '';
 
-    dbInstance.readAll()
-    .then(allTodolists => {
-        allTodolists.forEach(item => {
+    api.links.updateLinkList().then(data => {
+        data.forEach(item => {
             const liNode = createTodoItemView(item.content);
-            todolistNode.appendChild(liNode);
-        });
-    })
+            todolist.appendChild(liNode);
+        })
+    });
 }
+*/
 
+// Links Button
+addBtn.addEventListener('click', () => {
+    todolist.innerHTML = 'test';
+    // const dirtyInput = document.getElementById('myInput').value;
+    api.links.addNewLink().then(data => {
+        document.getElementById('myInput').value = 'changed';
+        // updateView();
+    });
+});
 
-
-updateView();
+// updateView();
