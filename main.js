@@ -47,7 +47,7 @@ app.whenReady().then(() => {
         blocker.enableBlockingInSession(mainWindow.webContents.session);
     });
 
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
 
     // Handle Preload API Calls from Renderer
     ipcMain.handle('windowResize', (event) => {
@@ -75,7 +75,8 @@ app.whenReady().then(() => {
 
     ipcMain.handle('contentCampaign', (event) => {
         view.detachBrowserView(mainWindow);
-        return 'CampaignTesting';
+        const campaignBodyContent = fs.readFileSync('app/views/components/campaign/windowBodyContent.html', 'utf-8');
+        return campaignBodyContent;
     });
 
     ipcMain.handle('contentTasks', (event) => {
