@@ -27,7 +27,7 @@ app.whenReady().then(() => {
         blocker.enableBlockingInSession(mainWindow.webContents.session);
     });
 
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 
     // Handle Preload API Calls from Renderer
     ipcMain.handle('windowResize', (event) => {
@@ -53,74 +53,14 @@ app.whenReady().then(() => {
         return 'HomeTesting';
     });
 
+    /* ---- Campaign Nav ---- */
+
+    // Loads Campaign Home Page
     ipcMain.handle('contentCampaign', (event) => {
         view.detachBrowserView(mainWindow);
         const campaignBodyContent = fs.readFileSync('app/views/components/campaign/windowBodyContent.html', 'utf-8');
         return campaignBodyContent;
     });
-
-    ipcMain.handle('contentTasks', (event) => {
-        view.detachBrowserView(mainWindow);
-        return 'TasksTesting';
-    });
-
-    ipcMain.handle('contentLinks', (event) => {
-        view.detachBrowserView(mainWindow);
-        const linkBodyContent = fs.readFileSync('app/views/components/links/windowBodyContent.html', 'utf-8');
-        return linkBodyContent;
-    });
-
-    ipcMain.handle('contentSettings', (event) => {
-        view.detachBrowserView(mainWindow);
-        return 'SettingsTesting';
-    });
-
-
-    ipcMain.handle('viewLab', (event) => {
-        view.detachBrowserView(mainWindow);
-
-        if (labView === '') {
-            labView = view.createBrowserView('https://www.poelab.com/', mainWindow, windowSidebarOffset, windowTitlebarOffset);
-        } else {
-            view.loadBrowserView(mainWindow, labView, windowSidebarOffset, windowTitlebarOffset);
-        }
-        return;
-    });
-
-    ipcMain.handle('viewNinja', (event) => {
-        view.detachBrowserView(mainWindow);
-
-        if (ninjaView === '') {
-            ninjaView = view.createBrowserView('https://poe.ninja/', mainWindow, windowSidebarOffset, windowTitlebarOffset);
-        } else {
-            view.loadBrowserView(mainWindow, ninjaView, windowSidebarOffset, windowTitlebarOffset);
-        }
-        return;
-    });
-
-    ipcMain.handle('viewAntiquary', (event) => {
-        view.detachBrowserView(mainWindow);
-
-        if (antiquaryView === '') {
-            antiquaryView = view.createBrowserView('https://poe-antiquary.xyz/', mainWindow, windowSidebarOffset, windowTitlebarOffset);
-        } else {
-            view.loadBrowserView(mainWindow, antiquaryView, windowSidebarOffset, windowTitlebarOffset);
-        }
-        return;
-    });
-
-    ipcMain.handle('viewWiki', (event) => {
-        view.detachBrowserView(mainWindow);
-
-        if (wikiView === '') {
-            wikiView = view.createBrowserView('https://www.poewiki.net/wiki/Path_of_Exile_Wiki', mainWindow, windowSidebarOffset, windowTitlebarOffset);
-        } else {
-            view.loadBrowserView(mainWindow, wikiView, windowSidebarOffset, windowTitlebarOffset);
-        }
-        return;
-    });
-
-    /* ---- Campaign Nav ---- */
 
     // Loads Campaign Act 1 Page
     ipcMain.handle('contentCampaignAct01', (event) => {
@@ -192,6 +132,68 @@ app.whenReady().then(() => {
         return campaignBodyContent;
     });
 
+
+    // Loads Task Page
+    ipcMain.handle('contentTasks', (event) => {
+        view.detachBrowserView(mainWindow);
+        return 'TasksTesting';
+    });
+
+    ipcMain.handle('contentLinks', (event) => {
+        view.detachBrowserView(mainWindow);
+        const linkBodyContent = fs.readFileSync('app/views/components/links/windowBodyContent.html', 'utf-8');
+        return linkBodyContent;
+    });
+
+    ipcMain.handle('contentSettings', (event) => {
+        view.detachBrowserView(mainWindow);
+        return 'SettingsTesting';
+    });
+
+
+    ipcMain.handle('viewLab', (event) => {
+        view.detachBrowserView(mainWindow);
+
+        if (labView === '') {
+            labView = view.createBrowserView('https://www.poelab.com/', mainWindow, windowSidebarOffset, windowTitlebarOffset);
+        } else {
+            view.loadBrowserView(mainWindow, labView, windowSidebarOffset, windowTitlebarOffset);
+        }
+        return;
+    });
+
+    ipcMain.handle('viewNinja', (event) => {
+        view.detachBrowserView(mainWindow);
+
+        if (ninjaView === '') {
+            ninjaView = view.createBrowserView('https://poe.ninja/', mainWindow, windowSidebarOffset, windowTitlebarOffset);
+        } else {
+            view.loadBrowserView(mainWindow, ninjaView, windowSidebarOffset, windowTitlebarOffset);
+        }
+        return;
+    });
+
+    ipcMain.handle('viewAntiquary', (event) => {
+        view.detachBrowserView(mainWindow);
+
+        if (antiquaryView === '') {
+            antiquaryView = view.createBrowserView('https://poe-antiquary.xyz/', mainWindow, windowSidebarOffset, windowTitlebarOffset);
+        } else {
+            view.loadBrowserView(mainWindow, antiquaryView, windowSidebarOffset, windowTitlebarOffset);
+        }
+        return;
+    });
+
+    ipcMain.handle('viewWiki', (event) => {
+        view.detachBrowserView(mainWindow);
+
+        if (wikiView === '') {
+            wikiView = view.createBrowserView('https://www.poewiki.net/wiki/Path_of_Exile_Wiki', mainWindow, windowSidebarOffset, windowTitlebarOffset);
+        } else {
+            view.loadBrowserView(mainWindow, wikiView, windowSidebarOffset, windowTitlebarOffset);
+        }
+        return;
+    });
 
 });
 
