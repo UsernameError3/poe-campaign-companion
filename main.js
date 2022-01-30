@@ -7,26 +7,6 @@ const fs = require('fs');
 const windowTitlebarOffset = 30;
 const windowSidebarOffset = 50;
 
-// Database Stuff
-const Datastore = require('electron-store');
-// const todoItemSchema = require('../schemas/todoItem');
-
-const todoItemSchema = {
-    type: 'object',
-    properties: {
-        content: {
-            type: 'string',
-        },
-        isDone: {
-            type: 'boolean',
-            default: false
-        }
-    },
-};
-
-const store = new Datastore({todoItemSchema});
-
-
 
 // Establish Cached BrowserViews
 const view = require("./app/utils/window/view");
@@ -139,34 +119,6 @@ app.whenReady().then(() => {
         }
         return;
     });
-
-    // Links
-
-    ipcMain.handle('addNewLink', (event) => {
-        console.log('input: ');
-    });
-
-    /*
-    ipcMain.handle('addNewLink', (event, dirtyInput) => {
-        console.log('input: ', dirtyInput);
-        if (dirtyInput) {
-            db.create({content: dirtyInput}).then(result => {
-                console.log('result: ', result);
-                return;
-            });
-        } else {
-            console.log('no input.');
-            return;
-        }
-    });
-    */
-
-    ipcMain.handle('updateLinkList', (event, dirtyInput) => {
-        db.readAll().then(result => {
-            return result;
-        });
-    });
-
 });
 
 // Windows / Linux Close Window
