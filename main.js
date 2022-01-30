@@ -119,6 +119,80 @@ app.whenReady().then(() => {
         }
         return;
     });
+
+    /* ---- Campaign Nav ---- */
+
+    // Loads Campaign Act 1 Page
+    ipcMain.handle('contentCampaignAct01', (event) => {
+        view.detachBrowserView(mainWindow);
+        const campaignBodyContent = fs.readFileSync('app/views/components/campaign/acts/campaignAct01.html', 'utf-8');
+        return campaignBodyContent;
+    });
+
+    // Loads Campaign Act 2 Page
+    ipcMain.handle('contentCampaignAct02', (event) => {
+        view.detachBrowserView(mainWindow);
+        const campaignBodyContent = fs.readFileSync('app/views/components/campaign/acts/campaignAct02.html', 'utf-8');
+        return campaignBodyContent;
+    });
+
+    // Loads Campaign Act 3 Page
+    ipcMain.handle('contentCampaignAct03', (event) => {
+        view.detachBrowserView(mainWindow);
+        const campaignBodyContent = fs.readFileSync('app/views/components/campaign/acts/campaignAct03.html', 'utf-8');
+        return campaignBodyContent;
+    });
+
+    // Loads Campaign Act 4 Page
+    ipcMain.handle('contentCampaignAct04', (event) => {
+        view.detachBrowserView(mainWindow);
+        const campaignBodyContent = fs.readFileSync('app/views/components/campaign/acts/campaignAct04.html', 'utf-8');
+        return campaignBodyContent;
+    });
+
+    // Loads Campaign Act 5 Page
+    ipcMain.handle('contentCampaignAct05', (event) => {
+        view.detachBrowserView(mainWindow);
+        const campaignBodyContent = fs.readFileSync('app/views/components/campaign/acts/campaignAct05.html', 'utf-8');
+        return campaignBodyContent;
+    });
+
+    // Loads Campaign Act 6 Page
+    ipcMain.handle('contentCampaignAct06', (event) => {
+        view.detachBrowserView(mainWindow);
+        const campaignBodyContent = fs.readFileSync('app/views/components/campaign/acts/campaignAct06.html', 'utf-8');
+        return campaignBodyContent;
+    });
+
+    // Loads Campaign Act 7 Page
+    ipcMain.handle('contentCampaignAct07', (event) => {
+        view.detachBrowserView(mainWindow);
+        const campaignBodyContent = fs.readFileSync('app/views/components/campaign/acts/campaignAct07.html', 'utf-8');
+        return campaignBodyContent;
+    });
+
+    // Loads Campaign Act 8 Page
+    ipcMain.handle('contentCampaignAct08', (event) => {
+        view.detachBrowserView(mainWindow);
+        const campaignBodyContent = fs.readFileSync('app/views/components/campaign/acts/campaignAct08.html', 'utf-8');
+        return campaignBodyContent;
+    });
+
+    // Loads Campaign Act 9 Page
+    ipcMain.handle('contentCampaignAct09', (event) => {
+        view.detachBrowserView(mainWindow);
+        const campaignBodyContent = fs.readFileSync('app/views/components/campaign/acts/campaignAct09.html', 'utf-8');
+        return campaignBodyContent;
+    });
+
+    // Loads Campaign Act 10 Page
+    ipcMain.handle('contentCampaignAct10', (event) => {
+        view.detachBrowserView(mainWindow);
+        const campaignBodyContent = fs.readFileSync('app/views/components/campaign/acts/campaignAct10.html', 'utf-8');
+        return campaignBodyContent;
+    });
+
+
 });
 
 // Windows / Linux Close Window
